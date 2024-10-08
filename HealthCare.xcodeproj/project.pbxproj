@@ -11,6 +11,11 @@
 		F43794472CB45EDF00DBA83E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43794462CB45EDF00DBA83E /* ContentView.swift */; };
 		F43794492CB45EE100DBA83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43794482CB45EE100DBA83E /* Assets.xcassets */; };
 		F437944D2CB45EE100DBA83E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F437944C2CB45EE100DBA83E /* Preview Assets.xcassets */; };
+		F43794542CB465DC00DBA83E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F43794532CB465DC00DBA83E /* Media.xcassets */; };
+		F43794582CB4695D00DBA83E /* intro_women.png in Resources */ = {isa = PBXBuildFile; fileRef = F43794572CB4695D00DBA83E /* intro_women.png */; };
+		F437945A2CB4697300DBA83E /* white_halo.png in Resources */ = {isa = PBXBuildFile; fileRef = F43794592CB4697300DBA83E /* white_halo.png */; };
+		F47A5EA32CB52AB4008829D8 /* LauncherScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */; };
+		F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		F43794482CB45EE100DBA83E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F437944A2CB45EE100DBA83E /* HealthCare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthCare.entitlements; sourceTree = "<group>"; };
 		F437944C2CB45EE100DBA83E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F43794532CB465DC00DBA83E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		F43794572CB4695D00DBA83E /* intro_women.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro_women.png; sourceTree = "<group>"; };
+		F43794592CB4697300DBA83E /* white_halo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_halo.png; sourceTree = "<group>"; };
+		F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherScreen.swift; sourceTree = "<group>"; };
+		F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +62,13 @@
 		F43794432CB45EDF00DBA83E /* HealthCare */ = {
 			isa = PBXGroup;
 			children = (
+				F47A5EA12CB52A97008829D8 /* ui */,
 				F43794442CB45EDF00DBA83E /* HealthCareApp.swift */,
 				F43794462CB45EDF00DBA83E /* ContentView.swift */,
 				F43794482CB45EE100DBA83E /* Assets.xcassets */,
+				F43794592CB4697300DBA83E /* white_halo.png */,
+				F43794572CB4695D00DBA83E /* intro_women.png */,
+				F43794532CB465DC00DBA83E /* Media.xcassets */,
 				F437944A2CB45EE100DBA83E /* HealthCare.entitlements */,
 				F437944B2CB45EE100DBA83E /* Preview Content */,
 			);
@@ -67,6 +81,15 @@
 				F437944C2CB45EE100DBA83E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F47A5EA12CB52A97008829D8 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */,
+				F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */,
+			);
+			path = ui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +151,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F437944D2CB45EE100DBA83E /* Preview Assets.xcassets in Resources */,
+				F437945A2CB4697300DBA83E /* white_halo.png in Resources */,
+				F43794582CB4695D00DBA83E /* intro_women.png in Resources */,
+				F43794542CB465DC00DBA83E /* Media.xcassets in Resources */,
 				F43794492CB45EE100DBA83E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47A5EA32CB52AB4008829D8 /* LauncherScreen.swift in Sources */,
 				F43794472CB45EDF00DBA83E /* ContentView.swift in Sources */,
+				F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */,
 				F43794452CB45EDF00DBA83E /* HealthCareApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

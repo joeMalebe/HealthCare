@@ -1,17 +1,18 @@
 //
-//  ContentView.swift
+//  LauncherScreen.swift
 //  HealthCare
 //
-//  Created by Malebe, Joe J on 2024/10/07.
+//  Created by Malebe, Joe J on 2024/10/08.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
+struct LauncherScreen: View {
+    var body: some View{
         ZStack {
             Color(Color.primary).ignoresSafeArea(.all)
             Image("halo").resizable().scaledToFit().offset(x: 0, y: -180)
+            
             
             VStack{
                 HStack {
@@ -37,5 +38,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    LauncherScreen()
 }
