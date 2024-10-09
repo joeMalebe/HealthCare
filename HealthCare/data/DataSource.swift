@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Category: Codable {
+struct Category: Codable, Hashable {
     let id: Int
     let name: String
     let picture: String
 }
 
-struct Doctor: Codable {
+struct Doctor: Codable, Hashable {
     let address: String
     let biography: String
     let experience: Int
@@ -29,7 +29,7 @@ struct Doctor: Codable {
 }
 
 // Sample structure that holds categories and doctors
-struct MedicalData: Codable {
+struct MedicalData: Codable, Hashable {
     let categories: [Category]
     let doctors: [Doctor?]
 }
