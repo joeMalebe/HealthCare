@@ -13,9 +13,6 @@ struct DashboardScreen : View {
     @State var search = ""
     let data = MedicalDatabase()
     var body: some View {
-        
-        
-        
         ScrollView{
             
             HStack {
@@ -25,7 +22,7 @@ struct DashboardScreen : View {
                 }
                 Spacer()
                 Image("images/profile").resizable().scaledToFill().frame(width: 50,height: 50).clipShape(Circle())
-            }
+            }.padding(.vertical)
             
             ZStack(alignment: .bottom){
                 Image("images/banner").resizable().scaledToFit()
@@ -37,22 +34,23 @@ struct DashboardScreen : View {
             let categories: [Category] = data.getAllCategories()
             SpecialistsView(categories: categories)
             
-            
-            let doctor = data.getAllDoctors().first!
             let doctors = data.getAllDoctors()
-            
-            LazyHStack {
-                
                 VStack(alignment:.leading) {
                     Text("Recently Visited Doctors").font(.headline)
                     
-                    
-                    ExtractedView(doctor: doctor)
-                }
-            }
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing:16, content: {
+                            ForEach(doctors, id: \.self) { doctor in
+                                
+                                DoctorView(doctor: doctor)
+                            }
+                        })
+                    }
+                }.padding(.vertical)
+        }.padding(.horizontal)
         }
     }
-}
+
 
 
 
@@ -72,13 +70,13 @@ struct SpecialistsView: View {
         VStack(alignment: .leading) {
             Text("Specialists").font(.headline)
             ScrollView(.horizontal){
-                LazyHStack(content: {
+                LazyHStack(spacing: 16, content: {
                     
                     ForEach(categories, id: \.self) { category in
                         VStack {
                             ZStack {
                                 let size = 72.0
-                                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(.secondary).opacity(0.3)
+                                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(.secondary).opacity(0.2)
                                 Image(category.picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
                                 
                             }
@@ -87,20 +85,16 @@ struct SpecialistsView: View {
                     }
                 })
             }
-            
-            
-            
-            
-        }
+        }.padding(.vertical)
     }
 }
 
-struct ExtractedView: View {
+struct DoctorView: View {
     let doctor: Doctor
     let cornerRadius = 25.0
-    let smallIconSize = 20.0
+    let smallIconSize = 16.0
     let cardHeight = 250.0
-    let cardWidth = 180.0
+    let cardWidth = 190.0
     
     var body: some View {
         VStack {
