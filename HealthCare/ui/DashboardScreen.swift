@@ -73,15 +73,7 @@ struct SpecialistsView: View {
                 LazyHStack(spacing: 16, content: {
                     
                     ForEach(categories, id: \.self) { category in
-                        VStack {
-                            ZStack {
-                                let size = 72.0
-                                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(.secondary).opacity(0.2)
-                                Image(category.picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
-                                
-                            }
-                            Text(category.name).font(.caption)
-                        }
+                        CaptionedIcon(picture: category.picture, caption: category.name)
                     }
                 })
             }
@@ -120,5 +112,27 @@ struct DoctorView: View {
                 }
             }
         }.frame(maxWidth: cardWidth,maxHeight: cardHeight)
+    }
+}
+
+struct CaptionedIcon: View {
+    let picture: String
+    let caption: String
+    var isSystemIcon = false
+    var body: some View {
+        VStack(alignment: .center) {
+            ZStack {
+                let size = 72.0
+                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(.secondary).opacity(0.2)
+                if(isSystemIcon) {
+                    Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
+                } else {
+                    Image(picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
+                }
+                
+                
+            }
+            Text(caption).font(.caption)
+        }
     }
 }
