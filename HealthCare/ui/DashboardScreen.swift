@@ -33,22 +33,28 @@ struct DashboardScreen : View {
                 
             }.scaledToFit()
             Spacer(minLength: 26)
-        
+            
             let categories: [Category] = data.getAllCategories()
             SpecialistsView(categories: categories)
             
-        
-            Text("Recently Visited Doctors")
             
+            let doctor = data.getAllDoctors().first!
+            let doctors = data.getAllDoctors()
             
+            LazyHStack {
+                
+                VStack(alignment:.leading) {
+                    Text("Recently Visited Doctors").font(.headline)
+                    
+                    
+                    ExtractedView(doctor: doctor)
+                }
+            }
         }
-        
-        
-        
-        
-        
     }
 }
+
+
 
 #Preview {
     DashboardScreen()
@@ -86,5 +92,39 @@ struct SpecialistsView: View {
             
             
         }
+    }
+}
+
+struct ExtractedView: View {
+    let doctor: Doctor
+    let cornerRadius = 25.0
+    let smallIconSize = 20.0
+    let cardHeight = 250.0
+    let cardWidth = 180.0
+    
+    var body: some View {
+        VStack {
+            ZStack{
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).foregroundColor(.white).shadow(radius: 2)
+                VStack {
+                    ZStack {
+                        UnevenRoundedRectangle(topLeadingRadius: cornerRadius,topTrailingRadius: cornerRadius).foregroundColor(.secondary).opacity(0.2)
+                        Image(doctor.picture).resizable().scaledToFit()
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text(doctor.name).font(.callout)
+                        Text(doctor.special).font(.caption)
+                        HStack{
+                            Image("images/star").resizable().scaledToFit().frame(maxWidth: smallIconSize,maxHeight: smallIconSize)
+                            Text(doctor.rating.formatted()).font(.caption).bold()
+                            Spacer()
+                            Image("images/medal").resizable().scaledToFit().frame(maxWidth: smallIconSize,maxHeight: smallIconSize)
+                            Text("\(doctor.experience.formatted()) years").font(.caption).bold()
+                        }
+                    }.padding()
+                }
+            }
+        }.frame(maxWidth: cardWidth,maxHeight: cardHeight)
     }
 }
