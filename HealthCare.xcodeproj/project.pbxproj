@@ -16,6 +16,8 @@
 		F47A5EA32CB52AB4008829D8 /* LauncherScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */; };
 		F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */; };
 		F4CC647B2CBAB071006FA4A5 /* DoctorDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */; };
+		F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647C2CBD8276006FA4A5 /* Colors.swift */; };
+		F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherScreen.swift; sourceTree = "<group>"; };
 		F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreen.swift; sourceTree = "<group>"; };
 		F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailScreen.swift; sourceTree = "<group>"; };
+		F4CC647C2CBD8276006FA4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				F47A5EA22CB52AB4008829D8 /* LauncherScreen.swift */,
 				F47A5EA42CB52B7B008829D8 /* DashboardScreen.swift */,
 				F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */,
+				F4CC647C2CBD8276006FA4A5 /* Colors.swift */,
+				F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -174,6 +180,8 @@
 				F47A5EA32CB52AB4008829D8 /* LauncherScreen.swift in Sources */,
 				F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */,
 				F423F0342CB592B6000886DE /* DataSource.swift in Sources */,
+				F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */,
+				F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */,
 				F43794452CB45EDF00DBA83E /* HealthCareApp.swift in Sources */,
 				F423F0362CB5967A000886DE /* MockData.swift in Sources */,
 				F4CC647B2CBAB071006FA4A5 /* DoctorDetailScreen.swift in Sources */,

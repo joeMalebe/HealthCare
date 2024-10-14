@@ -10,9 +10,11 @@ import SwiftUI
 
 struct LauncherScreen: View {
     var body: some View{
+        @StateObject var themeManager = ThemeManager()
+
         NavigationView{
             ZStack {
-                Color(Color.primary).ignoresSafeArea(.all)
+                Color(themeManager.selectedTheme.primary).ignoresSafeArea(.all)
                 Image("images/halo").resizable().scaledToFit().offset(x: 0, y: -180)
                 
                 
@@ -20,11 +22,11 @@ struct LauncherScreen: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text("Premium \nHealth care. \nAt your fingertips").font(.largeTitle).padding(.leading,0).padding(.top,0)
-                                .colorInvert()
+                                .foregroundColor(themeManager.selectedTheme.onPrimary)
                             
                             NavigationLink("Get started", destination: {
                                 DashboardScreen()
-                            }).buttonStyle(.borderedProminent).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            }).buttonStyle(.borderedProminent).tint(themeManager.selectedTheme.accent).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                             
                             
                         }.padding(32)

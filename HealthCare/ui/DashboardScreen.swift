@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct DashboardScreen : View {
-    
+    @StateObject var themeManager = ThemeManager()
     @State var search = ""
     let data = MedicalDatabase()
     var body: some View {
@@ -17,8 +17,8 @@ struct DashboardScreen : View {
             
             HStack {
                 VStack(alignment: .leading){
-                    Text("Welcome, \(user.name)").font(.headline)
-                    Text("How is your health?").font(.subheadline)
+                    Text("Welcome, \(user.name)").font(.headline).foregroundStyle(themeManager.selectedTheme.onBackground)
+                    Text("How is your health?").font(.subheadline).foregroundStyle(themeManager.selectedTheme.onBackground)
                 }
                 Spacer()
                 Image("images/profile").resizable().scaledToFill().frame(width: 50,height: 50).clipShape(Circle())
@@ -26,7 +26,10 @@ struct DashboardScreen : View {
             
             ZStack(alignment: .bottom){
                 Image("images/banner").resizable().scaledToFit()
-                TextField("\(Image(systemName: "magnifyingglass")) Search doctors",text: $search).foregroundColor(.primary) .textFieldStyle(.roundedBorder).padding(.horizontal).offset(CGSize(width: 0, height: 10.0)) .shadow(radius: 10)
+                TextField("\(Image(systemName: "magnifyingglass")) Search doctors",text: $search).overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(themeManager.selectedTheme.primary)
+                ).foregroundColor(themeManager.selectedTheme.primary) .textFieldStyle(.roundedBorder).padding(.horizontal).offset(CGSize(width: 0, height: 10.0)) .shadow(radius: 10)
                 
             }.scaledToFit()
             Spacer(minLength: 26)
@@ -35,21 +38,24 @@ struct DashboardScreen : View {
             SpecialistsView(categories: categories)
             
             let doctors = data.getAllDoctors()
-                VStack(alignment:.leading) {
-                    Text("Recently Visited Doctors").font(.headline)
-                    
-                    ScrollView(.horizontal) {
-                        LazyHStack(spacing:16, content: {
-                            ForEach(doctors, id: \.self) { doctor in
-                                
-                                DoctorView(doctor: doctor)
-                            }
-                        })
-                    }
-                }.padding(.vertical)
-        }.padding(.horizontal)
-        }
+            VStack(alignment:.leading) {
+                Text("Currently available").font(.headline).foregroundStyle(themeManager.selectedTheme.onBackground)
+                
+                ScrollView(.horizontal) {
+                    LazyHStack(spacing:16, content: {
+                        ForEach(doctors, id: \.self) { doctor in
+                            
+                            NavigationLink(destination: DoctorDetailScreen(doctor: doctor)) { 
+                                DoctorView(doctor:doctor)
+                            }.buttonStyle(PlainButtonStyle())
+                            
+                        }
+                    })
+                }
+            }.padding(.vertical)
+        }.padding(.horizontal).navigationBarBackButtonHidden(true)
     }
+}
 
 
 
@@ -65,10 +71,11 @@ struct User {
 let user = User(name: "Sarah Abrahams")
 
 struct SpecialistsView: View {
+    @StateObject var themeManager = ThemeManager()
     let categories: [Category]
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Specialists").font(.headline)
+            Text("Specialists").font(.headline).foregroundStyle(themeManager.selectedTheme.onBackground)
             ScrollView(.horizontal){
                 LazyHStack(spacing: 16, content: {
                     
@@ -82,6 +89,7 @@ struct SpecialistsView: View {
 }
 
 struct DoctorView: View {
+    @StateObject var themeManager = ThemeManager()
     let doctor: Doctor
     let cornerRadius = 25.0
     let smallIconSize = 16.0
@@ -91,10 +99,10 @@ struct DoctorView: View {
     var body: some View {
         VStack {
             ZStack{
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).foregroundColor(.white).shadow(radius: 2)
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).foregroundColor(themeManager.selectedTheme.background).shadow(radius: 2)
                 VStack {
                     ZStack {
-                        UnevenRoundedRectangle(topLeadingRadius: cornerRadius,topTrailingRadius: cornerRadius).foregroundColor(.secondary).opacity(0.2)
+                        UnevenRoundedRectangle(topLeadingRadius: cornerRadius,topTrailingRadius: cornerRadius).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.2)
                         Image(doctor.picture).resizable().scaledToFit()
                     }
                     
@@ -103,10 +111,10 @@ struct DoctorView: View {
                         Text(doctor.special).font(.caption)
                         HStack{
                             Image("images/star").resizable().scaledToFit().frame(maxWidth: smallIconSize,maxHeight: smallIconSize)
-                            Text(doctor.rating.formatted()).font(.caption).bold()
+                            Text(doctor.rating.formatted()).font(.caption).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
                             Spacer()
                             Image("images/medal").resizable().scaledToFit().frame(maxWidth: smallIconSize,maxHeight: smallIconSize)
-                            Text("\(doctor.experience.formatted()) years").font(.caption).bold()
+                            Text("\(doctor.experience.formatted()) years").font(.caption).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
                         }
                     }.padding()
                 }
@@ -116,23 +124,28 @@ struct DoctorView: View {
 }
 
 struct CaptionedIcon: View {
+    @StateObject var themeManager = ThemeManager()
     let picture: String
     let caption: String
     var isSystemIcon = false
+    var size = 72.0
     var body: some View {
         VStack(alignment: .center) {
             ZStack {
-                let size = 72.0
-                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(.secondary).opacity(0.2)
-                if(isSystemIcon) {
-                    Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
-                } else {
-                    Image(picture).resizable().renderingMode(  .template).foregroundColor(.primary).frame(width: size - 24,height: size - 24)
+                RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.background).shadow(radius: 2)
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.2).shadow(radius: 6)
+                    if(isSystemIcon) {
+                        Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 24,height: size - 24)
+                    } else {
+                        Image(picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 24,height: size - 24)
+                    }
+                    
+                    
                 }
-                
-                
             }
-            Text(caption).font(.caption)
+            Text(caption).font(.caption).foregroundStyle(themeManager.selectedTheme.onBackground)
         }
     }
 }

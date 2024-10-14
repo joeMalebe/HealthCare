@@ -8,63 +8,79 @@
 import SwiftUI
 
 struct DoctorDetailScreen : View {
+    @StateObject var themeManager = ThemeManager()
     let doctor: Doctor
     var body: some View {
-        NavigationView {
-            VStack( alignment: .leading,spacing: 16) {
-                let iconSize = 24.0
-                Text(doctor.name).font(.title)
-                Text(doctor.special).font(.subheadline)
-                HStack {
-                    
-                    Image("images/location 1").resizable().renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/).foregroundColor(.primary).scaledToFit().frame(maxWidth: iconSize,maxHeight: iconSize)
-                    
-                    Text(doctor.address).font(.subheadline).foregroundStyle(.primary)
+            ZStack(alignment: .bottom) {
+                ZStack(alignment: .top) {
+                    Color(themeManager.selectedTheme.primary)
+                    Image(doctor.picture).resizable().scaledToFit()
                 }
-                
-                
-                HStack(alignment: .center, spacing: 16) {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Patients").font(.subheadline).bold()
-                        Text(doctor.patients).font(.subheadline).foregroundStyle(.primary)
-                    }
-                    Spacer()
-                    Divider().frame(width: 1)
-                    Spacer()
-                    VStack(alignment: .center, spacing: 16) {
-                        Text("Experience").font(.subheadline).bold()
-                        Text("\(doctor.experience) years").font(.subheadline).foregroundStyle(.primary)
-                    }
-                    Spacer()
-                    Divider().frame(width: 1)
-                    Spacer()
-                    VStack(alignment: .trailing, spacing: 16) {
-                        Text("Rating").font(.subheadline).bold()
-                        
-                        HStack {
-                            Image("images/star").resizable().scaledToFit().frame(minWidth: iconSize - 4, maxWidth: iconSize - 4)
-                            Text(doctor.rating.formatted()).font(.subheadline).foregroundStyle(.primary)
-                        }
-                    }
-                }.scaledToFit().frame(alignment: .trailing)
-                
-                
-                VStack(alignment: .leading) {
-                    Text("Biography").font(.title2)
-                    Text(doctor.biography).font(.body)
+                ZStack {
+                    UnevenRoundedRectangle(topLeadingRadius: 50.0,topTrailingRadius: 50.0).foregroundColor(themeManager.selectedTheme.background).frame(maxHeight: 420)
+                    DoctorDetails(doctor: doctor)
                 }
-                
-                HStack(spacing: 16) {
-                    CaptionedIcon(picture: "link", caption: "Website",isSystemIcon: true)
-                    CaptionedIcon(picture: "phone", caption: "Call",isSystemIcon: true)
-                    CaptionedIcon(picture: "message", caption: "Chat",isSystemIcon: true)
-                }
-                Button("Book appointment") {
-                    
-                }.buttonStyle(.borderedProminent).tint(.primary)
-            }.padding()
+            }.navigationTitle(doctor.name)
+        
+    }
+}
+
+struct DoctorDetails: View {
+    @StateObject var themeManager = ThemeManager()
+    let doctor: Doctor
+    var body: some View {
+        VStack( alignment: .leading,spacing: 8) {
+            let iconSize = 24.0
             
-        }
+            Text(doctor.special).font(.headline)
+            HStack {
+                
+                Image("images/location 1").resizable().renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/).foregroundColor(themeManager.selectedTheme.primary).scaledToFit().frame(maxWidth: iconSize,maxHeight: iconSize)
+                
+                Text(doctor.address).font(.caption).foregroundStyle(themeManager.selectedTheme.primary)
+            }
+            
+            
+            HStack(alignment: .center, spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Patients").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
+                    Text(doctor.patients).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                }
+                Spacer()
+                Divider().frame(width: 1)
+                Spacer()
+                VStack(alignment: .center, spacing: 8) {
+                    Text("Experience").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
+                    Text("\(doctor.experience) years").font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                }
+                Spacer()
+                Divider().frame(width: 1)
+                Spacer()
+                VStack(alignment: .trailing, spacing: 8) {
+                    Text("Rating").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
+                    
+                    HStack {
+                        Image("images/star").resizable().scaledToFit().frame(minWidth: iconSize - 4, maxWidth: iconSize - 4)
+                        Text(doctor.rating.formatted()).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                    }
+                }
+            }.scaledToFit().frame(alignment: .trailing)
+            
+            
+            VStack(alignment: .leading) {
+                Text("Biography").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
+                Text(doctor.biography).font(.subheadline).foregroundStyle(themeManager.selectedTheme.onBackground)
+            }
+            
+            HStack(spacing: 16) {
+                CaptionedIcon(picture: "link", caption: "Website",isSystemIcon: true, size: 40.0)
+                CaptionedIcon(picture: "phone", caption: "Call",isSystemIcon: true, size: 40.0)
+                CaptionedIcon(picture: "message", caption: "Chat",isSystemIcon: true, size: 40.0)
+            }
+            Button("Book appointment") {
+                
+            }.buttonStyle(.borderedProminent).tint(themeManager.selectedTheme.primary)
+        }.padding()
     }
 }
 
