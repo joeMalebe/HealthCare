@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct Location: Codable, Hashable {
+    let latitude: Double
+    let longitude: Double
+}
+
 struct Category: Codable, Hashable {
     let id: Int
     let name: String
@@ -18,7 +23,7 @@ struct Doctor: Codable, Hashable {
     let biography: String
     let experience: Int
     let id: Int
-    let location: String
+    let location: Location
     let mobile: String
     let name: String
     let patients: String

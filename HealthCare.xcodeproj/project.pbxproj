@@ -19,6 +19,8 @@
 		F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647C2CBD8276006FA4A5 /* Colors.swift */; };
 		F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */; };
 		F4CC64812CBD97F8006FA4A5 /* NearbyListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */; };
+		F4DC8E2B2CBEBD9000732632 /* MapDoctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */; };
+		F4DC8E2E2CBEC6E600732632 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC8E2D2CBEC6E600732632 /* MapHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F4CC647C2CBD8276006FA4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyListScreen.swift; sourceTree = "<group>"; };
+		F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDoctors.swift; sourceTree = "<group>"; };
+		F4DC8E2D2CBEC6E600732632 /* MapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		F43794432CB45EDF00DBA83E /* HealthCare */ = {
 			isa = PBXGroup;
 			children = (
+				F4DC8E2C2CBEC6D100732632 /* utility */,
 				F423F0322CB59299000886DE /* data */,
 				F47A5EA12CB52A97008829D8 /* ui */,
 				F43794442CB45EDF00DBA83E /* HealthCareApp.swift */,
@@ -105,8 +110,17 @@
 				F4CC647C2CBD8276006FA4A5 /* Colors.swift */,
 				F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */,
 				F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */,
+				F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		F4DC8E2C2CBEC6D100732632 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				F4DC8E2D2CBEC6E600732632 /* MapHelper.swift */,
+			);
+			path = utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +198,9 @@
 				F4CC64812CBD97F8006FA4A5 /* NearbyListScreen.swift in Sources */,
 				F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */,
 				F423F0342CB592B6000886DE /* DataSource.swift in Sources */,
+				F4DC8E2E2CBEC6E600732632 /* MapHelper.swift in Sources */,
 				F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */,
+				F4DC8E2B2CBEBD9000732632 /* MapDoctors.swift in Sources */,
 				F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */,
 				F43794452CB45EDF00DBA83E /* HealthCareApp.swift in Sources */,
 				F423F0362CB5967A000886DE /* MockData.swift in Sources */,

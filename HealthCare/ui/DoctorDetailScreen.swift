@@ -91,7 +91,7 @@ struct DoctorDetails: View {
         biography: "A board-certified with over 25 years of experience, specializing in heart conditions such as coronary artery disease and arrhythmias. Known for patient-centered care and a commitment to the latest medical advancements",
         experience: 20,
         id: 0,
-        location: "http://maps.google.com/maps?q=loc:31.995801008207952,44.31452133516133",
+        location:Location(latitude: -26.183866,longitude:27.993132),
         mobile: "00123456789",
         name: "Dr. Michael Roberts",
         patients: "1200+",
