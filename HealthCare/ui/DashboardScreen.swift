@@ -102,7 +102,7 @@ struct DoctorView: View {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).foregroundColor(themeManager.selectedTheme.background).shadow(radius: 2)
                 VStack {
                     ZStack {
-                        UnevenRoundedRectangle(topLeadingRadius: cornerRadius,topTrailingRadius: cornerRadius).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.2)
+                        UnevenRoundedRectangle(topLeadingRadius: cornerRadius,topTrailingRadius: cornerRadius).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.5)
                         Image(doctor.picture).resizable().scaledToFit()
                     }
                     
@@ -135,7 +135,7 @@ struct CaptionedIcon: View {
                 RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.background).shadow(radius: 2)
                 ZStack {
                     
-                    RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.2).shadow(radius: 6)
+                    RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.5).shadow(radius: 6)
                     if(isSystemIcon) {
                         Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 24,height: size - 24)
                     } else {

@@ -17,6 +17,7 @@ protocol ThemeProtocol {
     var onPrimary: Color { get }
     var background: Color { get }
     var onSecondary: Color { get }
+    var starBackground: Color { get }
 }
 
 

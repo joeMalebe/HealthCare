@@ -29,7 +29,7 @@ struct DoctorDetails: View {
     @StateObject var themeManager = ThemeManager()
     let doctor: Doctor
     var body: some View {
-        VStack( alignment: .leading,spacing: 8) {
+        VStack( alignment: .leading,spacing: 16) {
             let iconSize = 24.0
             
             Text(doctor.special).font(.headline)
@@ -47,14 +47,15 @@ struct DoctorDetails: View {
                     Text(doctor.patients).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
                 }
                 Spacer()
-                Divider().frame(width: 1)
+                Divider()
                 Spacer()
+                
                 VStack(alignment: .center, spacing: 8) {
                     Text("Experience").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
                     Text("\(doctor.experience) years").font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
                 }
                 Spacer()
-                Divider().frame(width: 1)
+                Divider()
                 Spacer()
                 VStack(alignment: .trailing, spacing: 8) {
                     Text("Rating").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
@@ -64,7 +65,7 @@ struct DoctorDetails: View {
                         Text(doctor.rating.formatted()).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
                     }
                 }
-            }.scaledToFit().frame(alignment: .trailing)
+            }.frame(maxHeight: 50,alignment: .trailing)
             
             
             VStack(alignment: .leading) {

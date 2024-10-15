@@ -18,6 +18,7 @@
 		F4CC647B2CBAB071006FA4A5 /* DoctorDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */; };
 		F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647C2CBD8276006FA4A5 /* Colors.swift */; };
 		F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */; };
+		F4CC64812CBD97F8006FA4A5 /* NearbyListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailScreen.swift; sourceTree = "<group>"; };
 		F4CC647C2CBD8276006FA4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyListScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				F4CC647A2CBAB071006FA4A5 /* DoctorDetailScreen.swift */,
 				F4CC647C2CBD8276006FA4A5 /* Colors.swift */,
 				F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */,
+				F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47A5EA32CB52AB4008829D8 /* LauncherScreen.swift in Sources */,
+				F4CC64812CBD97F8006FA4A5 /* NearbyListScreen.swift in Sources */,
 				F47A5EA52CB52B7B008829D8 /* DashboardScreen.swift in Sources */,
 				F423F0342CB592B6000886DE /* DataSource.swift in Sources */,
 				F4CC647F2CBD83B8006FA4A5 /* ThemeManager.swift in Sources */,

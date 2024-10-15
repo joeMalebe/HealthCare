@@ -33,6 +33,8 @@ struct Main: ThemeProtocol {
     
     var onSecondary: Color { return  Color("colors/onSecondary")}
     
+    var starBackground: Color { return  Color("colors/starBackground")}
+    
     
     
 }
