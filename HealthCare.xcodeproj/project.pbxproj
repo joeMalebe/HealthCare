@@ -21,6 +21,7 @@
 		F4CC64812CBD97F8006FA4A5 /* NearbyListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */; };
 		F4DC8E2B2CBEBD9000732632 /* MapDoctors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */; };
 		F4DC8E2E2CBEC6E600732632 /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC8E2D2CBEC6E600732632 /* MapHelper.swift */; };
+		F4DC8E302CC2D34D00732632 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DC8E2F2CC2D34D00732632 /* MapDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyListScreen.swift; sourceTree = "<group>"; };
 		F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDoctors.swift; sourceTree = "<group>"; };
 		F4DC8E2D2CBEC6E600732632 /* MapHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
+		F4DC8E2F2CC2D34D00732632 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				F4CC647E2CBD83B8006FA4A5 /* ThemeManager.swift */,
 				F4CC64802CBD97F8006FA4A5 /* NearbyListScreen.swift */,
 				F4DC8E2A2CBEBD9000732632 /* MapDoctors.swift */,
+				F4DC8E2F2CC2D34D00732632 /* MapDetailView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				F4CC647D2CBD8276006FA4A5 /* Colors.swift in Sources */,
 				F43794452CB45EDF00DBA83E /* HealthCareApp.swift in Sources */,
 				F423F0362CB5967A000886DE /* MockData.swift in Sources */,
+				F4DC8E302CC2D34D00732632 /* MapDetailView.swift in Sources */,
 				F4CC647B2CBAB071006FA4A5 /* DoctorDetailScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

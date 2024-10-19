@@ -25,7 +25,10 @@ struct DashboardScreen : View {
             }.padding(.vertical)
             
             ZStack(alignment: .bottom){
-                Image("images/banner").resizable().scaledToFit()
+                NavigationLink(destination: MapDoctors(doctors: data.getAllDoctors()),  label: {
+                    Image("images/banner").resizable().scaledToFit()
+                })
+                
                 TextField("\(Image(systemName: "magnifyingglass")) Search doctors",text: $search).overlay(
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(themeManager.selectedTheme.primary)
