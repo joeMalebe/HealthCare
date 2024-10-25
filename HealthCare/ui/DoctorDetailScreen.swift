@@ -95,7 +95,7 @@ struct DoctorDetails: View {
         mobile: "00123456789",
         name: "Dr. Michael Roberts",
         patients: "1200+",
-        picture: "images/doctors/Dr. Michael Roberts",
+        picture: "images/doctors/Dr. Mariana Oliveira",
         rating: 4.2,
         site: "http://www.test.com",
         special: "Orthopedics"

@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct NearbyListScreen : View{
-    
+    @State var shouldNavigateToDetail = false
     let doctors: [Doctor]
+    let category: String
+    @State var selectedDoctor: Doctor?
     var body: some View{
         
         ScrollView(.vertical) {
+            NavigationLink(isActive: $shouldNavigateToDetail) {
+                if(selectedDoctor != nil){
+                    DoctorDetailScreen(doctor: selectedDoctor!)
+                }
+            } label: {
+                
+            }
+
             LazyVStack(spacing: 16) {
                 ForEach(doctors, id: \.self) { doctor in
                     
-                    DoctorItem(doctor: doctor)
+                    DoctorItem(doctor: doctor,onProfileClick: { doctorProfile in
+                        shouldNavigateToDetail = true
+                        selectedDoctor = doctorProfile
+                    })
                 }
             }.padding()
-        }
+        }.navigationTitle(category)
     }
 }
 
@@ -27,21 +40,20 @@ struct NearbyListScreen : View{
 struct DoctorItem: View {
     @StateObject var themeManager = ThemeManager()
     let doctor: Doctor
+    let onProfileClick: (Doctor) -> Void
     let iconSize = 16.0
     let size = 136.0
     var body: some View {
         ZStack(alignment:.leading) {
             RoundedRectangle(cornerRadius: 10).frame(maxHeight: size  ).foregroundStyle(themeManager.selectedTheme.background).shadow(radius: 3)
-            
-            
                 HStack(alignment: .center) {
                     ZStack {
                         ZStack(alignment:.bottom) {
                             
                             RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.5)
-                            
-                            
-                            Image(doctor.picture).resizable().foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 4,height: size - 4)
+                            Image(doctor.picture).resizable().scaledToFit().foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 4,height: size - 4).onTapGesture {
+                                onProfileClick(doctor)
+                            }
                         }
                     }
                     VStack(alignment: .leading, spacing: 8){
@@ -85,7 +97,7 @@ struct DoctorItem: View {
         mobile: "00123456789",
         name: "Dr. Michael Roberts",
         patients: "1200+",
-        picture: "images/doctors/Dr. Michael Roberts",
+        picture: "images/doctors/Dr. Thabo Mokoena",
         rating: 4.2,
         site: "http://www.test.com",
         special: "Orthopedics"
@@ -102,5 +114,5 @@ struct DoctorItem: View {
         rating: 4.2,
         site: "http://www.test.com",
         special: "Orthopedics"
-    )])
+    )],category: "Doctor")
 }

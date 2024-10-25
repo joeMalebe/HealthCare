@@ -12,6 +12,7 @@ struct MapDetailView : View {
     let doctor: Doctor
     let doctors: [Doctor]
     @Binding var selected: Bool
+    let showParentNavigation: (Doctor) -> Void
     @Binding var mapItem: MKMapItem?
     
     var body: some View {
@@ -19,7 +20,10 @@ struct MapDetailView : View {
                 let doctor = getSelectedDoctorBy(name: mapItem?.placemark.name
                                                  , doctors: doctors)
                 if(mapItem != nil) {
-                    DoctorItem(doctor: doctor!).padding()
+                   
+                    DoctorItem(doctor: doctor!,onProfileClick: {doctor in showParentNavigation(doctor) }).padding().onTapGesture {
+                        //showParentNavigation()
+                    }
                 }
         }
     }
@@ -67,14 +71,12 @@ struct MapDetailView : View {
         site: "http://www.test.com",
         special: "Orthopedics"
     )],
-                  selected: .constant(true),mapItem: .constant(nil))
+                  selected: .constant(true),showParentNavigation: {d in},mapItem: .constant(nil))
 }
 
-extension MapDetailView {
-    
-        func getSelectedDoctorBy(name: String?, doctors: [Doctor]) -> Doctor? {
-       return doctors.first { Doctor in
-            Doctor.name == name
-       }
-    }
+
+func getSelectedDoctorBy(name: String?, doctors: [Doctor]) -> Doctor? {
+return doctors.first { Doctor in
+    Doctor.name == name
+}
 }

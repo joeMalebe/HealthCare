@@ -38,15 +38,18 @@ struct DashboardScreen : View {
             Spacer(minLength: 26)
             
             let categories: [Category] = data.getAllCategories()
-            SpecialistsView(categories: categories)
             
             let doctors = data.getAllDoctors()
+            SpecialistsView(doctors:doctors,  categories: categories)
+            
             VStack(alignment:.leading) {
-                Text("Currently available").font(.headline).foregroundStyle(themeManager.selectedTheme.onBackground)
+                Text("Available today").font(.headline).foregroundStyle(themeManager.selectedTheme.onBackground)
                 
                 ScrollView(.horizontal) {
                     LazyHStack(spacing:16, content: {
-                        ForEach(doctors, id: \.self) { doctor in
+                        ForEach(doctors.filter({ Doctor in
+                            Doctor.experience < 10
+                        }), id: \.self) { doctor in
                             
                             NavigationLink(destination: DoctorDetailScreen(doctor: doctor)) { 
                                 DoctorView(doctor:doctor)
@@ -75,6 +78,7 @@ let user = User(name: "Sarah Abrahams")
 
 struct SpecialistsView: View {
     @StateObject var themeManager = ThemeManager()
+    let doctors: [Doctor]
     let categories: [Category]
     var body: some View {
         VStack(alignment: .leading) {
@@ -83,7 +87,13 @@ struct SpecialistsView: View {
                 LazyHStack(spacing: 16, content: {
                     
                     ForEach(categories, id: \.self) { category in
-                        CaptionedIcon(picture: category.picture, caption: category.name)
+                        NavigationLink {
+                            NearbyListScreen(doctors: doctors.filter({ Doctor in
+                                Doctor.special == category.name
+                            }),category:category.name)
+                        } label: {
+                            CaptionedIcon(picture: category.picture, caption: category.name)
+                        }
                     }
                 })
             }

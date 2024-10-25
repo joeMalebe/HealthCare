@@ -10,8 +10,12 @@ import MapKit
 
 struct MapDoctors: View {
     let doctors: [Doctor]
+    @StateObject var themeManager = ThemeManager()
+    @Environment(\.dismiss) private var dismiss
+    @State private var shouldNavigate = false
     @State private var isDetailVisible: Bool = false
     @State private var mapSelection: MKMapItem?
+    @State private var selectedDocter: Doctor?
     @State private var position: MapCameraPosition = .region(.init(center: CLLocationCoordinate2D(latitude: -26.180866457809795, longitude: 27.98946299228406), span: .init(latitudeDelta: 0.0180, longitudeDelta: 0.0180)))
     
     var body: some View {
@@ -21,23 +25,50 @@ struct MapDoctors: View {
            doctorMarker.name = $0.name
            return doctorMarker
         } as [MKMapItem]
-        Map(position: $position, selection: $mapSelection) {
-            
-            ForEach(mapItems, id: \.self) {
-                            Marker(item: $0)
-                        }
-        }.onChange(of: mapSelection, { oldValue, newValue in
-                       isDetailVisible = newValue != nil
-            
-        })
-        .sheet(isPresented: $isDetailVisible, content: {
-            MapDetailView(doctor: doctors.first!,doctors:doctors, selected: $isDetailVisible, mapItem: $mapSelection)
-                .presentationDetents([.height(160)])
-                .presentationBackgroundInteraction(
-                    .enabled(upThrough: .height(160)))
-                .presentationCornerRadius(12)
-        })
         
+        ZStack(alignment:.topLeading) {
+            NavigationLink(isActive: $shouldNavigate, destination: {
+                if(selectedDocter != nil) {
+                    DoctorDetailScreen(doctor: selectedDocter!)
+                }
+            }, label: {
+                
+            })
+
+            Map(position: $position, selection: $mapSelection) {
+                
+                ForEach(mapItems, id: \.self) {
+                                Marker(item: $0)
+                            }
+            }.onChange(of: mapSelection, { oldValue, newValue in
+                           isDetailVisible = newValue != nil || oldValue == newValue
+                 
+                selectedDocter = getSelectedDoctorBy(name: newValue?.placemark.name
+                                                 ,doctors: doctors)
+            })
+            .sheet(isPresented: $isDetailVisible, content: {
+                MapDetailView(doctor: doctors.first!,doctors:doctors, selected: $isDetailVisible, showParentNavigation: { doctorProfile in
+                    isDetailVisible = false
+                    shouldNavigate = true
+                    selectedDocter = doctorProfile
+                }, mapItem: $mapSelection )
+                    .presentationDetents([.height(180)])
+                    .presentationBackgroundInteraction(
+                        .enabled(upThrough: .height(180)))
+                    .presentationCornerRadius(12)
+                        })
+
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left").frame(width: 32, height: 32).tint(themeManager.selectedTheme.primary)
+            }.frame(width: 32,height: 32).buttonStyle(.bordered).clipShape(RoundedRectangle(cornerRadius: 12)).tint(themeManager.selectedTheme.primary).padding(40)
+            
+            
+
+                
+        }.ignoresSafeArea().navigationBarBackButtonHidden(true)
+    
     }
 }
 
