@@ -35,16 +35,16 @@ struct DoctorDetails: View {
             Text(doctor.special).font(.headline)
             HStack {
                 
-                Image("images/location 1").resizable().renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/).foregroundColor(themeManager.selectedTheme.primary).scaledToFit().frame(maxWidth: iconSize,maxHeight: iconSize)
+                Image("images/location 1").resizable().renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/).foregroundColor(themeManager.selectedTheme.onSecondary).scaledToFit().frame(maxWidth: iconSize,maxHeight: iconSize)
                 
-                Text(doctor.address).font(.caption).foregroundStyle(themeManager.selectedTheme.primary)
+                Text(doctor.address).font(.caption).foregroundStyle(themeManager.selectedTheme.onSecondary)
             }
             
             
             HStack(alignment: .center, spacing: 8) {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Patients").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
-                    Text(doctor.patients).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                    Text(doctor.patients).font(.subheadline).foregroundStyle(themeManager.selectedTheme.onSecondary)
                 }
                 Spacer()
                 Divider()
@@ -52,7 +52,7 @@ struct DoctorDetails: View {
                 
                 VStack(alignment: .center, spacing: 8) {
                     Text("Experience").font(.subheadline).bold().foregroundStyle(themeManager.selectedTheme.onBackground)
-                    Text("\(doctor.experience) years").font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                    Text("\(doctor.experience) years").font(.subheadline).foregroundStyle(themeManager.selectedTheme.onSecondary)
                 }
                 Spacer()
                 Divider()
@@ -62,7 +62,7 @@ struct DoctorDetails: View {
                     
                     HStack {
                         Image("images/star").resizable().scaledToFit().frame(minWidth: iconSize - 4, maxWidth: iconSize - 4)
-                        Text(doctor.rating.formatted()).font(.subheadline).foregroundStyle(themeManager.selectedTheme.primary)
+                        Text(doctor.rating.formatted()).font(.subheadline).foregroundStyle(themeManager.selectedTheme.onSecondary)
                     }
                 }
             }.frame(maxHeight: 50,alignment: .trailing)

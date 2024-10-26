@@ -41,7 +41,7 @@ struct MapDoctors: View {
                                 Marker(item: $0)
                             }
             }.onChange(of: mapSelection, { oldValue, newValue in
-                           isDetailVisible = newValue != nil || oldValue == newValue
+                           isDetailVisible = newValue != nil
                  
                 selectedDocter = getSelectedDoctorBy(name: newValue?.placemark.name
                                                  ,doctors: doctors)

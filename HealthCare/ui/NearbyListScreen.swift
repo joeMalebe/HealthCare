@@ -79,7 +79,7 @@ struct DoctorItem: View {
                             Text("Book Appointment")            }.buttonStyle(.borderedProminent).tint(themeManager.selectedTheme.secondary).controlSize(.regular).foregroundStyle(themeManager.selectedTheme.onSecondary)
                         
                     
-                }.scaledToFit()
+                    }.scaledToFit()
                 
                 
             }

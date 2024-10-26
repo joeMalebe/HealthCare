@@ -29,11 +29,13 @@ struct DashboardScreen : View {
                     Image("images/banner").resizable().scaledToFit()
                 })
                 
-                TextField("\(Image(systemName: "magnifyingglass")) Search doctors",text: $search).overlay(
+                TextField("",text: $search, prompt: Text("\(Image(systemName: "magnifyingglass")) Search doctors").foregroundStyle(themeManager.selectedTheme.onBackground)
+                ).overlay(
                     RoundedRectangle(cornerRadius: 5)
-                        .stroke(themeManager.selectedTheme.primary)
-                ).foregroundColor(themeManager.selectedTheme.primary) .textFieldStyle(.roundedBorder).padding(.horizontal).offset(CGSize(width: 0, height: 10.0)) .shadow(radius: 10)
-                
+                        .stroke( themeManager.selectedTheme.primary,lineWidth: 3.0)
+                ).foregroundStyle(themeManager.selectedTheme.primary).textFieldStyle(.roundedBorder)
+                    .padding(.horizontal).offset(CGSize(width: 0, height: 10.0)) .shadow(radius: 10)
+//
             }.scaledToFit()
             Spacer(minLength: 26)
             
@@ -59,7 +61,7 @@ struct DashboardScreen : View {
                     })
                 }
             }.padding(.vertical)
-        }.padding(.horizontal).navigationBarBackButtonHidden(true)
+        }.padding(.horizontal).navigationBarBackButtonHidden(true).background(themeManager.selectedTheme.background)
     }
 }
 
@@ -150,15 +152,15 @@ struct CaptionedIcon: View {
                     
                     RoundedRectangle(cornerRadius: 10).frame(width: size,height: size).foregroundColor(themeManager.selectedTheme.secondary).opacity(0.5).shadow(radius: 6)
                     if(isSystemIcon) {
-                        Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 24,height: size - 24)
+                        Image(systemName: picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.onSecondary).frame(width: size - 24,height: size - 24)
                     } else {
-                        Image(picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.primary).frame(width: size - 24,height: size - 24)
+                        Image(picture).resizable().renderingMode(  .template).foregroundColor(themeManager.selectedTheme.onSecondary).frame(width: size - 24,height: size - 24)
                     }
                     
                     
                 }
             }
-            Text(caption).font(.caption).foregroundStyle(themeManager.selectedTheme.onBackground)
+            Text(caption).font(.caption).foregroundStyle(themeManager.selectedTheme.onSecondary)
         }
     }
 }
